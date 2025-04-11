@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="keywords" content="Pampuszka, Ukraińskie dania, Ukrainska kuchnia, pampuszka krosno, pampuszka, ukrainskie dania">
+  <link rel="shortcut icon" href="../Pampuszka/IMG_0186.JPG" />
+  <title>Pampuszka</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Verdana', sans-serif;
+      background: url(../Pampuszka/tlo.jpg) fixed center;
+      color: #4a2c2a;
+    }
+
+    header {
+      background-color: #FEFEFE;
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      max-width: 300px;
+      border-radius: 20px;
+    }
+
+    nav {
+      background-color: #f5c6aa;
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      gap: 30px;
+      font-weight: bold;
+      font-size: 40px;
+      text-shadow: 1px 1px 0px white;
+    }
+    .gora{
+      background-color: #f5c6aa;
+      display: flex;
+      margin: auto;
+      justify-content: center;
+      padding: 15px 0;
+      gap: 30px;
+      font-weight: bold;
+      font-size: 40px;
+      text-shadow: 1px 1px 0px white;
+      width: 200px;
+      border-radius: 20px;
+    }
+    .gora a{
+      text-decoration: none;
+      color: #4a2c2a;
+      transition: 0.4s;
+    }
+    nav a {
+      text-decoration: none;
+      color: #4a2c2a;
+      transition: 0.4s;
+    }
+
+    nav a:hover {
+      color: #8b0000;
+      font-size: 50px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0px auto;
+      padding: 0 0px;
+      background-color: white;
+      border-radius: 40px;
+    }
+
+    .welcome {
+      text-align: center;
+      background-color: #fbe0ce;
+      padding: 30px;
+      border-radius: 40px;
+      font-size: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    .days-menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .day-button:hover{
+      transform: scale(1.2);
+      transition: 0.3s;
+    }
+    .day-button {
+      background-color: #f5c6aa;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 32px;
+      color: #4a2c2a;
+      transition: background-color 0.3s;
+    }
+
+    .day-button.active,
+    .day-button:hover {
+      background-color: #e2ac91;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .dish-card {
+      background-color: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .dish-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .dish-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .dish-card img:hover {
+      transform: scale(1.05);
+    }
+
+    .dish-card h3 {
+      margin: 10px 0 5px;
+      color: #8b0000;
+      font-size: 30px;
+    }
+
+    .dish-card p {
+      font-size: 26px;
+      color: #555;
+    }
+
+    .dish-price {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #4a2c2a;
+    }
+
+    footer {
+      background-color: #fbe0ce;
+      text-align: center;
+      padding: 20px;
+      font-size: 26px;
+      margin-top: 50px;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 30px;
+    }
+    .contact-info a{
+      text-decoration: none;
+      color: #333;
+    }
+    .menu-day {
+      display: none;
+    }
+
+    .menu-day.active {
+      display: grid;
+    }
+
+  .dish-row {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Затримка анімації для кожного елементу */
+  .dish-row:nth-child(1) { animation-delay: 0.1s; }
+  .dish-row:nth-child(2) { animation-delay: 0.2s; }
+  .dish-row:nth-child(3) { animation-delay: 0.3s; }
+  .dish-row:nth-child(4) { animation-delay: 0.4s; }
+  .dish-row:nth-child(5) { animation-delay: 0.5s; }
+  .dish-row:nth-child(6) { animation-delay: 0.6s; }
+
+  @media (max-width: 768px) {
+    .menu-days {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .dish-row {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .dish-img img {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+    }
+
+    .dish-price {
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+  .footer-socials {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .social-icon img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+  }
+
+  .social-icon img:hover {
+    transform: scale(1.1);
+  }
+  .oferta-wielkanocna {
+  background-color: #f5f5f5; /* м'який фон */
+  border-radius: 10px; /* округлені кути */
+  padding: 20px; /* відступи всередині */
+  margin: 20px 0; /* відступи ззовні */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* тінь для об'єму */
+  text-align: center; /* вирівнювання тексту по центру */
+}
+
+.oferta-wielkanocna h2 {
+  font-size: 2.7rem; /* великий заголовок */
+  color: #2a9d8f; /* кольоровий текст */
+  margin-bottom: 15px; /* відступ знизу */
+  font-family: 'Arial', sans-serif; /* шрифт */
+}
+
+.oferta-wielkanocna p {
+  font-size: 2.3rem; /* розмір шрифту */
+  color: #333; /* темний текст */
+  margin-bottom: 20px; /* відступ знизу */
+}
+
+.oferta-wielkanocna ul {
+  list-style-type: none; /* без маркерів */
+  padding: 0;
+}
+
+.oferta-wielkanocna ul li {
+  font-size: 1.7rem;
+  color: #555; /* більш світлий текст */
+  margin-bottom: 10px; /* відступи між пунктами */
+}
+
+.oferta-wielkanocna ul .of-wel::before {
+  content: "✔️"; /* символ біля кожного елементу списку */
+  margin-right: 8px;
+}
+@media (max-width: 600px) {
+  .oferta-wielkanocna {
+    padding: 15px; /* зменшити відступи на мобільних */
+  }
+
+  .oferta-wielkanocna h2 {
+    font-size: 1.5rem; /* зменшити розмір заголовка на мобільних */
+  }
+
+  .oferta-wielkanocna p {
+    font-size: 1.5rem; /* зменшити текст */
+  }
+}
+  </style>
+</head>
+<body>
+<a id="gora"></a>
+  <header>
+    <img src="IMG_0186.JPG" alt="Логотип Pampuszka">
+  </header>
+  
+  <nav>
+    <a href="#menu">Menu</a> |
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+  <div class="container">
+    <div class="welcome">
+      Ласкаво просимо до ресторану <strong>Pampuszka</strong>! <br>
+      Насолоджуйтесь справжньою українською кухнею з душею ♥
+    </div>
+
+    <div class="days-menu">
+      <button class="day-button active" data-day="mon">Poniedziałek</button>
+      <button class="day-button" data-day="tue">Wtorek</button>
+      <button class="day-button" data-day="wed">Środa</button>
+      <a id="menu"></a>
+      <button class="day-button" data-day="thu">Czwartek</button>
+      <button class="day-button" data-day="fri">Piątek</button>
+      <button class="day-button" data-day="sat">Sobota</button>
+    </div>
+
+    <!-- Понеділок -->
+<div class="menu-grid menu-day active" id="mon">
+    <div class="dish-card">
+      <img src="barszcz.jpeg" alt="Борщ">
+      <h3>Barszcz z pampuszkami</h3>
+      <p>Класичний борщ з м’ясом</p>
+      <div class="dish-price">85 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="вареники з картоплею.jpeg" alt="Вареники з картоплею">
+      <h3>Ziemniaki lub kasza bulgur + Pulpeciki wieprzowe w sosie koperkowym + Surówka</h3>
+      <p>Зі смаженою цибулькою</p>
+      <div class="dish-price">75 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Голубці.jpeg" alt="Голубці">
+      <h3>Naleśniki z twarogiem</h3>
+      <p>Рис, м’ясо, капуста</p>
+      <div class="dish-price">90 ₴</div>
+    </div>
+  </div>
+  
+  <!-- Вівторок -->
+  <div class="menu-grid menu-day" id="tue">
+    <div class="dish-card">
+      <img src="Пампушки з часником.jpeg" alt="Пампушки">
+      <h3>Rosół z kurczaka i makaronem</h3>
+      <p>Свіжа випічка</p>
+      <div class="dish-price">40 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Котлета по-київськи.jpeg" alt="Котлета по-київськи">
+      <h3>Ziemniaki po wiejsku + Schab wieprzowy z pomidorami i serem + Surówka</h3>
+      <p>Куряча котлета з маслом</p>
+      <div class="dish-price">100 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Салат Олів’є.jpeg" alt="Олів’є">
+      <h3>Makaron łazanki z kiszoną kapustą i grzybami + Surówka</h3>
+      <p>Традиційний з горошком</p>
+      <div class="dish-price">65 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Квашена капуста.jpeg" alt="Квашена капуста">
+      <h3>Czebureki</h3>
+      <p>Ідеальний гарнір до основних страв</p>
+      <div class="dish-price">11 zl</div>
+    </div>
+  </div>
+  
+  <!-- Середа -->
+  <div class="menu-grid menu-day" id="wed">
+    <div class="dish-card">
+      <img src="barszcz.jpeg" alt="Борщ">
+      <h3>Żurek z jajkiem / Grochówka</h3>
+      <p>Класичний борщ із часником</p>
+      <div class="dish-price">85 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Вареники з капустою.jpeg" alt="Вареники з капустою">
+      <h3>Karkówka + Kasza gryczana + Surówka</h3>
+      <p>З домашньою капустою</p>
+      <div class="dish-price">80 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Салат з буряком.jpeg" alt="Салат">
+      <h3>Gołąbki z mięsem i ryżem</h3>
+      <p>З грецким горіхом</p>
+      <div class="dish-price">70 ₴</div>
+    </div>
+  </div>
+  
+  <!-- Четвер -->
+  <div class="menu-grid menu-day" id="thu">
+    <div class="dish-card">
+      <img src="Гречаний суп.jpeg" alt="Гречаний суп">
+      <h3>Solanka / Krupnik</h3>
+      <p>Суп з гречки та овочів</p>
+      <div class="dish-price">65 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Котлета з картоплею.jpeg" alt="Котлета з картоплею">
+      <h3>Placki ziemniaczane z grzybami / mięsem</h3>
+      <p>Запечена котлета з гарніром</p>
+      <div class="dish-price">100 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Вареники з вишнями.jpeg" alt="Вареники з вишнями">
+      <h3>Kotlet mielony z grzybami i serem + Ziemniaki + Surówka</h3>
+      <p>Солодкі вареники</p>
+      <div class="dish-price">90 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Окрошка.jpeg" alt="Окрошка">
+      <h3>Parówka w cieście</h3>
+      <p>Холодний суп на кефірі</p>
+      <div class="dish-price">80 ₴</div>
+    </div>
+  </div>
+  
+  <!-- Пʼятниця -->
+  <div class="menu-grid menu-day" id="fri">
+    <div class="dish-card">
+      <img src="Часниковий суп.jpeg" alt="Часниковий суп">
+      <h3>Zupa brokułowa / Barszcz z pampuszkami</h3>
+      <p>Із часником та травами</p>
+      <div class="dish-price">75 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Пампушки з медом.jpeg" alt="Пампушки з медом">
+      <h3>Krokiety z kapustą i mięsem</h3>
+      <p>Свіжа випічка з медом</p>
+      <div class="dish-price">45 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Картопля по-селянськи.jpeg" alt="Картопля по-селянськи">
+      <h3>Schab wieprzowy z pomidorami i serem + Frytki + Surówka</h3>
+      <p>З часниковим соусом</p>
+      <div class="dish-price">50 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Тушкована капуста.jpeg" alt="Тушкована капуста">
+      <h3>Proziaki z ziemniakami</h3>
+      <p>З овочами та спеціями</p>
+      <div class="dish-price">55 ₴</div>
+    </div>
+  </div>
+  
+  <!-- Субота -->
+  <div class="menu-grid menu-day" id="sat">
+    <div class="dish-card">
+      <img src="Гречка з м’ясом.jpeg" alt="Гречка з м'ясом">
+      <h3>Barszcz z pampuszkami</h3>
+      <p>Гречка з тушкованим м'ясом</p>
+      <div class="dish-price">90 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Салат з капустою.jpeg" alt="Салат з капустою">
+      <h3>Pyzy w sosie + Surówka</h3>
+      <p>Класичний салат з капустою та морквою</p>
+      <div class="dish-price">50 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Пельмені.jpeg" alt="Пельмені">
+      <h3>Ziemniaczana zapiekanka + Surówka</h3>
+      <p>З м'ясом і соусом</p>
+      <div class="dish-price">80 ₴</div>
+    </div>
+    <div class="dish-card">
+      <img src="Голубці.jpeg" alt="Голубці">
+      <h3>Naleśniki z jabłkiem</h3>
+      <p>З рисом та м'ясом</p>
+      <div class="dish-price">95 ₴</div>
+    </div>
+  </div>   
+  <div class="oferta-wielkanocna">
+    <h2>Oferta Wielkanocna</h2>
+    <p>Delektuj się świątecznymi potrawami na Wielkanoc!</p>
+    <ul>
+      <li class="of-wel">Kiełbasa domowa pieczona z wieprzowiny - 60 zł/kg</li>
+      <li class="of-wel">Kiełbasa domowa z kurczaka - 60 zł/kg</li>
+      <li class="of-wel">Sałatka pod futrem śledzi - 70 zł/kg</li>
+      <li class="of-wel">Bułka jajeczna z serem - 60 zł/kg</li>
+      <li class="of-wel">Rolada szpinakowa z łososiem - 70 zł/kg</li>
+      <li class="of-wel">Bakłażany z pomidorami i czosnkiem - 2.5 zł/szt</li>
+      <li class="of-wel">Sałatka Winigret - 60 zł/kg</li>
+      <li class="of-wel">Krokiety świąteczne z kurczakiem i pieczarkami - 8 zł/szt</li>
+      <li class="of-wel">Profitrole z tuńczykiem - 8 zł/szt</li>
+      <li class="of-wel">Żurek z kiełbasą i grzybami - 0.5 l 22 zł</li>
+      <li class="of-wel">Babka Wielkanocna: 
+      <ul>
+        <li>150-200 gr - 20 zł</li>
+        <li>250 gr - 25 zł</li>
+        <li>300 gr - 30 zł</li>
+        <li>350-400 gr - 35 zł</li>
+      </ul></li>
+    </ul>
+  </div>  
+    <div class="contact-info">
+      <p><strong>📍 Adres:</strong><a href="https://www.google.pl/maps/place/Smaczna+kuchnia+%22PAMPUSZKA%22/@49.6890539,21.7594709,19.93z/data=!3m1!5s0x473c48b44c34d8e7:0x723cce649a1f528f!4m6!3m5!1s0x473c4969a766ad19:0x1a8a5cfe1e55206!8m2!3d49.6893974!4d21.7601911!16s%2Fg%2F11k457qhkh?entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Feliksa Czajkowskiego 49, 38-400 Krosno</a> </p>
+      <p><strong>📞 Telefon:</strong> +48-511-278-990</p>
+      <p><strong>🕒 Harmonogram:</strong> <br> Pn-Pt: 11:00 – 16:00 <br>
+      Sobota: 11:00 - 15:00 <br>
+      Niedziela: zamknięte</p>
+      <a id="kontakt"></a>
+    </div>
+
+    <div class="footer-socials">
+      <div class="social-icons">
+        <div class="social-icon">
+          <a href="https://www.facebook.com/profile.php?id=100085878336614" target="_blank"><img src="Facebook.png" alt="Facebook" width="100" height="100"></a>
+        </div>
+        <div class="social-icon">
+          <a href="https://www.instagram.com/pampuszka_pl/?fbclid=IwY2xjawJmGnhleHRuA2FlbQIxMAABHorn4QuFhIjBHVqhIoK_9_TQVD5FLHqcH7gTJlgG9Xe49NLXBMAnHrjXleWz_aem_fewbhVULT_IJJxpoIvtPtA#" target="_blank"><img src="Instagram.jpeg" alt="Instagram" width="100" height="100"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="gora">
+      <a href="#gora">Góra</a>
+    </nav>
+  <footer class="copy">
+    &copy; 2025 Pampuszka — Prawdziwa ukraińskia kuchnia
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll(".day-button");
+    const menus = document.querySelectorAll(".menu-day");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const day = btn.dataset.day;
+        menus.forEach(menu => {
+          menu.classList.remove("active");
+          if (menu.id === day) {
+            menu.classList.add("active");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
