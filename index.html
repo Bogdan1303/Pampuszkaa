@@ -10,7 +10,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Verdana', sans-serif;
-      background: url(../Pampuszka/tlo.jpg) fixed center;
+      background: url(tlo.jpg) fixed center;
       color: #4a2c2a;
     }
 
@@ -37,7 +37,20 @@
       text-shadow: 1px 1px 0px white;
     }
     .gora{
-      background-color: #f5c6aa;
+      background-color: white;
+      display: flex;
+      margin: auto;
+      justify-content: center;
+      padding: 15px 0;
+      gap: 30px;
+      font-weight: bold;
+      font-size: 40px;
+      text-shadow: 1px 1px 0px white;
+      width: 200px;
+      border-radius: 20px;
+    }
+    .gora2{
+      background-color: #f5f5f5;
       display: flex;
       margin: auto;
       justify-content: center;
@@ -51,7 +64,6 @@
     }
     .gora a{
       text-decoration: none;
-      color: #4a2c2a;
       transition: 0.4s;
     }
     nav a {
@@ -66,11 +78,12 @@
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1300px;
       margin: 0px auto;
       padding: 0 0px;
       background-color: white;
       border-radius: 40px;
+      height: 100%;
     }
 
     .welcome {
@@ -309,13 +322,14 @@
   
   <nav>
     <a href="#menu">Menu</a> |
-    <a href="#kontakt">Kontakt</a>
+    <a href="#kontakt">Kontakt</a> |
+    <a href="#oferta">Oferta</a>
   </nav>
 
   <div class="container">
     <div class="welcome">
-      Ласкаво просимо до ресторану <strong>Pampuszka</strong>! <br>
-      Насолоджуйтесь справжньою українською кухнею з душею ♥
+      Witamy w restauracji <strong>Pampuszka!</strong> <br>
+     Ciesz się autentyczną ukraińską kuchnią z duszą♥
     </div>
 
     <div class="days-menu">
@@ -333,19 +347,16 @@
     <div class="dish-card">
       <img src="barszcz.jpeg" alt="Борщ">
       <h3>Barszcz z pampuszkami</h3>
-      <p>Класичний борщ з м’ясом</p>
       <div class="dish-price">85 ₴</div>
     </div>
     <div class="dish-card">
       <img src="вареники з картоплею.jpeg" alt="Вареники з картоплею">
       <h3>Ziemniaki lub kasza bulgur + Pulpeciki wieprzowe w sosie koperkowym + Surówka</h3>
-      <p>Зі смаженою цибулькою</p>
       <div class="dish-price">75 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Голубці.jpeg" alt="Голубці">
       <h3>Naleśniki z twarogiem</h3>
-      <p>Рис, м’ясо, капуста</p>
       <div class="dish-price">90 ₴</div>
     </div>
   </div>
@@ -355,25 +366,21 @@
     <div class="dish-card">
       <img src="Пампушки з часником.jpeg" alt="Пампушки">
       <h3>Rosół z kurczaka i makaronem</h3>
-      <p>Свіжа випічка</p>
       <div class="dish-price">40 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Котлета по-київськи.jpeg" alt="Котлета по-київськи">
       <h3>Ziemniaki po wiejsku + Schab wieprzowy z pomidorami i serem + Surówka</h3>
-      <p>Куряча котлета з маслом</p>
       <div class="dish-price">100 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Салат Олів’є.jpeg" alt="Олів’є">
       <h3>Makaron łazanki z kiszoną kapustą i grzybami + Surówka</h3>
-      <p>Традиційний з горошком</p>
       <div class="dish-price">65 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Квашена капуста.jpeg" alt="Квашена капуста">
       <h3>Czebureki</h3>
-      <p>Ідеальний гарнір до основних страв</p>
       <div class="dish-price">11 zl</div>
     </div>
   </div>
@@ -383,19 +390,16 @@
     <div class="dish-card">
       <img src="barszcz.jpeg" alt="Борщ">
       <h3>Żurek z jajkiem / Grochówka</h3>
-      <p>Класичний борщ із часником</p>
       <div class="dish-price">85 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Вареники з капустою.jpeg" alt="Вареники з капустою">
       <h3>Karkówka + Kasza gryczana + Surówka</h3>
-      <p>З домашньою капустою</p>
       <div class="dish-price">80 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Салат з буряком.jpeg" alt="Салат">
       <h3>Gołąbki z mięsem i ryżem</h3>
-      <p>З грецким горіхом</p>
       <div class="dish-price">70 ₴</div>
     </div>
   </div>
@@ -405,25 +409,21 @@
     <div class="dish-card">
       <img src="Гречаний суп.jpeg" alt="Гречаний суп">
       <h3>Solanka / Krupnik</h3>
-      <p>Суп з гречки та овочів</p>
       <div class="dish-price">65 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Котлета з картоплею.jpeg" alt="Котлета з картоплею">
       <h3>Placki ziemniaczane z grzybami / mięsem</h3>
-      <p>Запечена котлета з гарніром</p>
       <div class="dish-price">100 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Вареники з вишнями.jpeg" alt="Вареники з вишнями">
       <h3>Kotlet mielony z grzybami i serem + Ziemniaki + Surówka</h3>
-      <p>Солодкі вареники</p>
       <div class="dish-price">90 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Окрошка.jpeg" alt="Окрошка">
       <h3>Parówka w cieście</h3>
-      <p>Холодний суп на кефірі</p>
       <div class="dish-price">80 ₴</div>
     </div>
   </div>
@@ -433,25 +433,21 @@
     <div class="dish-card">
       <img src="Часниковий суп.jpeg" alt="Часниковий суп">
       <h3>Zupa brokułowa / Barszcz z pampuszkami</h3>
-      <p>Із часником та травами</p>
       <div class="dish-price">75 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Пампушки з медом.jpeg" alt="Пампушки з медом">
       <h3>Krokiety z kapustą i mięsem</h3>
-      <p>Свіжа випічка з медом</p>
       <div class="dish-price">45 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Картопля по-селянськи.jpeg" alt="Картопля по-селянськи">
       <h3>Schab wieprzowy z pomidorami i serem + Frytki + Surówka</h3>
-      <p>З часниковим соусом</p>
       <div class="dish-price">50 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Тушкована капуста.jpeg" alt="Тушкована капуста">
       <h3>Proziaki z ziemniakami</h3>
-      <p>З овочами та спеціями</p>
       <div class="dish-price">55 ₴</div>
     </div>
   </div>
@@ -461,29 +457,25 @@
     <div class="dish-card">
       <img src="Гречка з м’ясом.jpeg" alt="Гречка з м'ясом">
       <h3>Barszcz z pampuszkami</h3>
-      <p>Гречка з тушкованим м'ясом</p>
       <div class="dish-price">90 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Салат з капустою.jpeg" alt="Салат з капустою">
       <h3>Pyzy w sosie + Surówka</h3>
-      <p>Класичний салат з капустою та морквою</p>
       <div class="dish-price">50 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Пельмені.jpeg" alt="Пельмені">
       <h3>Ziemniaczana zapiekanka + Surówka</h3>
-      <p>З м'ясом і соусом</p>
       <div class="dish-price">80 ₴</div>
     </div>
     <div class="dish-card">
       <img src="Голубці.jpeg" alt="Голубці">
       <h3>Naleśniki z jabłkiem</h3>
-      <p>З рисом та м'ясом</p>
       <div class="dish-price">95 ₴</div>
     </div>
   </div>   
-  <div class="oferta-wielkanocna">
+  <a id="oferta"></a><div class="oferta-wielkanocna">
     <h2>Oferta Wielkanocna</h2>
     <p>Delektuj się świątecznymi potrawami na Wielkanoc!</p>
     <ul>
@@ -505,6 +497,9 @@
         <li>350-400 gr - 35 zł</li>
       </ul></li>
     </ul>
+    <nav class="gora2">
+      <a href="#gora">↑</a>
+    </nav>
   </div>  
     <div class="contact-info">
       <p><strong>📍 Adres:</strong><a href="https://www.google.pl/maps/place/Smaczna+kuchnia+%22PAMPUSZKA%22/@49.6890539,21.7594709,19.93z/data=!3m1!5s0x473c48b44c34d8e7:0x723cce649a1f528f!4m6!3m5!1s0x473c4969a766ad19:0x1a8a5cfe1e55206!8m2!3d49.6893974!4d21.7601911!16s%2Fg%2F11k457qhkh?entry=ttu&g_ep=EgoyMDI1MDQwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Feliksa Czajkowskiego 49, 38-400 Krosno</a> </p>
@@ -525,10 +520,10 @@
         </div>
       </div>
     </div>
-  </div>
-  <nav class="gora">
-      <a href="#gora">Góra</a>
+    <nav class="gora">
+      <a href="#gora">↑</a>
     </nav>
+  </div>
   <footer class="copy">
     &copy; 2025 Pampuszka — Prawdziwa ukraińskia kuchnia
   </footer>
